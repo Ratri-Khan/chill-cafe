@@ -1,10 +1,11 @@
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
     const {createUser}  = useContext(AuthContext);
+    const [error,setError] = useState('');
 
     const handleRegister = event =>{
         event.preventDefault();
@@ -15,6 +16,17 @@ const Register = () => {
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
     //   console.log(name,email,password);
+    if(password !== confirmPassword){
+        setError('Password is not same,please try again');
+        return;
+    }
+    if(password.length < 6 ) {
+        setError('Password Must be 6 character.');
+        return;
+    }
+
+
+
     createUser(email,name,password,confirmPassword)
     .then(result =>{
         const createdUser = result.user;
@@ -52,6 +64,9 @@ const Register = () => {
                 </div>
                 <div className="form-control">
                     <p className=''><Link to='/login'>Already have an Account?</Link></p>
+                </div>
+                <div>
+                    {error}
                 </div>
                 <div>
                     <button className='rounded w-full border-2 py-2 mt-5 bg-red-700 border-red-700 text-white' type="submit">Register</button>
