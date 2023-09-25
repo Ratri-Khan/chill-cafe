@@ -1,13 +1,13 @@
 import React from 'react';
 // import { Like } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-    const { image, name, experience, recipes, like } = chef;
-    console.log(chef.name);
+    const {id, image, name, experience, recipes, like } = chef;
     return (
         
-        <div class="card w-96 bg-red-800  mt-5 shadow-xl">
+        <div class="card w-96 bg-red-900  mt-5 shadow-xl">
             <figure class="px-10 pt-10">
                 <img src={image} alt="Shoes" class="rounded-xl" />
             </figure>
@@ -17,7 +17,7 @@ const ChefCard = ({ chef }) => {
                 <p className='py-0'>Recipes : {recipes}</p>
                 <p  className='py-0 inline'> <FaHeart className='inline' /> : {like}</p>
                 <div class="card-actions">
-                    <button class="btn bg-red-700 hover:bg-black hover:text-white text-white">View Details</button>
+                    <button class="btn bg-red-700 hover:bg-black hover:text-white text-white"><Link to={`/recipeDetails/${id}`}>View Recipes</Link></button>
                 </div>
             </div>
         </div>
