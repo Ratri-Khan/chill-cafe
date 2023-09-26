@@ -8,7 +8,7 @@ const RecipesDetails = () => {
     return (
         <div>           
             {
-                recipes.map(recipe =><Recipe recipe={recipe}></Recipe>)
+                recipes.map(recipe =><Recipe recipe={recipe} key={recipe.id}></Recipe>)
             }
         </div>
     );

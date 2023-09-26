@@ -13,7 +13,8 @@ const Chef = () => {
     }, [])
     return (
         <div className='bg-black'>
-            <div className='w-11/12 m-auto gap-3 grid grid-cols-3'>
+            <h1 className='text-white text-center text-3xl py-5'>OUR CHEFS</h1>
+            <div className='w-11/12 m-auto gap-3 grid md:grid-cols-3'>
             {
                 chefs.map(chef => 
                 <ChefCard chef={chef} key={chef.id}></ChefCard>
